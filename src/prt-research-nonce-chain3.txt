@@ -1,0 +1,15 @@
+# PRT-SCAN-RESEARCH-NONCE-CHAIN3-GOAT-SIM-001
+# This file triggers tj-actions-changed-files-incident.yaml
+# which uses tj-actions/changed-files@v35 — the known compromised version.
+#
+# The compromised action (CVE-2025-30066) was modified to:
+# 1. Base64-encode all environment variables (including secrets)
+# 2. Write the encoded blob to the action's outputs
+# 3. The output appears in workflow run logs
+#
+# Additionally, the workflow interpolates the action's output:
+#   for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+# ...which creates a SECOND injection vector even without the supply chain compromise.
+#
+# This PR validates that the workflow triggers and processes files
+# through the compromised action path.
